@@ -40,13 +40,7 @@ function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
   // "objetoMisterioso" tiene una propiedad llamada "numeroMisterioso"
   // Multiplica el numeroMisterioso por 5 y devuelve el producto
   // Tu código:
-  var objetoMisterioso={
-    numeroMisterioso:numeroMisterioso*5,
-
-
-  };
-  return objetoMisterioso;
-
+    return objetoMisterioso.numeroMisterioso*5;
 }
 
 function eliminarPropiedad(objeto, unaPropiedad) {
@@ -114,12 +108,8 @@ function verificarPassword(usuario, password) {
   // Devuelve "true" si coinciden
   // De lo contrario, devuelve "false"
   // // Tu código:
-  if(usuario[password]===password){
-    return true;
-  }
-  else{
-    return false;
-  }
+  return usuario['password']===password;
+  
 
 }
 
@@ -165,12 +155,12 @@ function sumarLikesDeUsuario(usuario) {
   // Devuelve la suma
   // Tu código:
   var acum=0;
-  for(m=0;m<usuario.length;m++){
-     acum=acum + usuario[m].posts.likes;
-      return acum;
+  for(m=0;m<usuario.posts.length;m++){
+     acum=acum + usuario.posts[m].likes;
+      
 
   }
-  
+  return acum;
   
 }
 
@@ -184,6 +174,10 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
+  producto.calcularPrecioDescuento = function() {
+    return this.precio - ( this.precio * this.porcentajeDeDescuento );
+  };
+  return producto;
   
 
 }
